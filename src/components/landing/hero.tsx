@@ -14,38 +14,39 @@ export function Hero() {
   return (
     <section id="inicio" className="relative overflow-hidden bg-[#0e202a]">
       {/* Fotografía personal — protagonista absoluto del hero.
-          Escena oscura cinematográfica: Gabino iluminado emerge del fondo,
-          igual que en la referencia. */}
+          Imagen original SIN filtro de oscuridad: se integra con un fundido
+          de máscara (disuelve el borde en el fondo) para máxima claridad. */}
       <div className="absolute inset-y-0 right-0 w-full sm:w-[68%] lg:w-[62%]">
         <Image
-          src="/images/gabino-hero-v2.png"
+          src="/images/gabino-hero.png"
           alt="Gabino, consultor de empresas, en su oficina"
           fill
           priority
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 68vw, 62vw"
-          className="object-cover object-[50%_50%] contrast-[1.04] saturate-[1.05] lg:object-[85%_50%]"
+          className="object-cover object-[50%_50%] saturate-[1.03] contrast-[1.02] lg:object-[50%_55%] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_38%)] [mask-image:linear-gradient(to_right,transparent_0%,black_38%)]"
         />
-        {/* Fusión suave solo en el borde izquierdo: la foto conserva todo su impacto */}
+        {/* Asistencia de fusión a la izquierda (más presente en móvil) */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-r from-[#0e202a] from-0% via-[#0e202a]/45 via-[16%] to-transparent to-[55%]"
+          className="absolute inset-0 bg-gradient-to-r from-[#0e202a]/90 from-0% via-[#0e202a]/60 via-[20%] to-transparent to-[52%] sm:via-[#0e202a]/35 sm:via-[16%]"
         />
-        {/* Profundidad sutil hacia la base, como en la referencia */}
+        {/* Transición suave hacia la franja inferior */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-[#0e202a]/70 via-transparent to-[#0e202a]/15"
+          className="absolute inset-0 bg-gradient-to-t from-[#0e202a]/75 via-transparent to-[#0e202a]/10"
         />
       </div>
 
       {/* Firma y pilares — superpuesta en sm+ */}
       <div className="pointer-events-none absolute right-5 top-12 z-10 hidden text-right sm:right-12 sm:top-14 sm:block">
-        <p className="font-script text-5xl leading-none text-white drop-shadow-[0_2px_10px_rgba(6,26,41,0.55)] [-rotate-6] sm:text-[64px] lg:text-[72px]">
+        <p className="font-script text-5xl leading-none text-white drop-shadow-[0_2px_10px_rgba(6,26,41,0.55)] [-rotate-6] sm:text-[68px] lg:text-[80px]">
           Gabino
         </p>
         <p className="mt-2 space-y-0.5 text-[9.5px] font-semibold leading-[1.7] tracking-[0.32em] text-[#94d2ca] drop-shadow-[0_1px_6px_rgba(6,26,41,0.65)] sm:text-[10px]">
           <span className="block">ESTRATEGIA</span>
           <span className="block">PERSONAS</span>
           <span className="block">PROCESOS</span>
+          <span className="block">TECNOLOGÍA</span>
           <span className="block">RESULTADOS</span>
         </p>
       </div>
@@ -94,6 +95,7 @@ export function Hero() {
                 <span className="block">ESTRATEGIA</span>
                 <span className="block">PERSONAS</span>
                 <span className="block">PROCESOS</span>
+                <span className="block">TECNOLOGÍA</span>
                 <span className="block">RESULTADOS</span>
               </p>
             </div>

@@ -88,3 +88,21 @@ Stage Summary:
 - Hero visualmente alineado a la referencia: foto con impacto cinematográfico, colores exactos sampleados, tipografía y quiebres de línea fieles al mockup.
 - Nueva imagen: public/images/gabino-hero-v2.png (la original gabino-hero.png se conserva).
 - Pendiente operativo: commit + push a github.com/gatsilver/landing_gt_v1.
+
+---
+Task ID: hero-photo-clarity-font-pillars
+Agent: Z.ai Code (main)
+Task: Usar la foto de perfil original del usuario sin filtro de oscuridad (claridad y elegancia), corregir la tipografía script de la firma "Gabino" para que coincida con la referencia, y actualizar los pilares a 5: Estrategia, Personas, Procesos, Tecnología y Resultados.
+
+Work Log:
+- Reemplazada la foto del hero: upload/GabinoTS_3.png (944x1024, original del usuario) → public/images/gabino-hero.png; eliminada gabino-hero-v2.png (versión oscura rechazada).
+- Integración sin oscurecer: máscara CSS [-webkit-]mask-image linear-gradient en el <img> para disolver el borde izquierdo en el fondo + gradientes de asistencia ligeros (izq /90→/35 sm, base /75). La persona permanece 100% iluminada.
+- object-position: móvil 50%_50% (rostro a la derecha), lg 50%_55% (cabeza arriba como la referencia).
+- Fuente de firma: reemplazada Mrs_Saint_Delafield por Alex_Brush (next/font/google, variable --font-alexbrush) en layout.tsx y globals.css; tamaño lg:text-[80px], sm:text-[68px].
+- Pilares: agregado TECNOLOGÍA (5 líneas) en overlay desktop y bloque móvil.
+- Bug resuelto: Turbopack servía CSS cacheado con var(--font-delafield) inexistente (firma sin estilo). Solución: limpiar caché .next y reiniciar dev server.
+- Verificación agent-browser desktop 1440 + móvil 390: firma Alex Brush rotada, foto clara, 5 pilares visibles. Lint OK.
+
+Stage Summary:
+- Hero final: foto original clara y elegante sin filtro oscuro, firma script fiel a la referencia, pilares ESTRATEGIA/PERSONAS/PROCESOS/TECNOLOGÍA/RESULTADOS.
+- Lección: si un cambio en globals.css no se refleja, limpiar .next (caché persistente de Turbopack).

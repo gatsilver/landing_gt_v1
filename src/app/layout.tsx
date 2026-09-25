@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Mrs_Saint_Delafield } from "next/font/google";
+import { Montserrat, Alex_Brush } from "next/font/google";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -9,8 +9,8 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-const delafield = Mrs_Saint_Delafield({
-  variable: "--font-delafield",
+const alexBrush = Alex_Brush({
+  variable: "--font-alexbrush",
   weight: "400",
   subsets: ["latin"],
   display: "swap",
@@ -44,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body
-        className={`${montserrat.variable} ${delafield.variable} antialiased bg-background text-foreground`}
+        className={`${montserrat.variable} ${alexBrush.variable} antialiased bg-background text-foreground`}
       >
         {children}
       </body>
