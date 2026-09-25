@@ -47,3 +47,27 @@ Stage Summary:
 - Stack: Next.js 16 + Tailwind CSS 4 + TypeScript + lucide-react + next/image
 - Verificado end-to-end en navegador (desktop 1440px y móvil 390px): render, interactividad y responsive OK; lint limpio; dev.log sin errores
 - Assets en public/images/ (11 archivos); código en src/app/{layout,page,globals} y src/components/landing/*
+
+---
+Task ID: 10
+Agent: Z.ai Code (principal)
+Task: Refinamientos solicitados por el usuario — protagonismo del perfil en el HERO, tipografía fiel al mockup (sans bold), calendario + formulario en "Agenda una llamada", y pestaña de detalle para cada servicio
+
+Work Log:
+- Leído worklog.md y revisados los 11 componentes landing existentes + mockup-reference.png + gabino-hero.png
+- Tipografía: reemplazadas Lora/Marcellus/Inter por Montserrat (400–800) en layout.tsx; añadido token --font-display en globals.css; reemplazado font-serif/font-logo por font-display en los 9 archivos afectados (titulares extrabold como el mockup; firma Mrs Saint Delafield intacta)
+- HERO: foto ampliada (52%→58% en lg, 66% en sm), fundidos aligerados (via-navy-800/20, sin capa multiply), halos teal/dorado en mix-blend-screen detrás del perfil, sombra en firma; titular max-w-2xl con 52px para respetar los 3 saltos de línea del mockup
+- Agenda: creado src/components/landing/agenda.tsx con AgendaProvider (contexto), AgendaDialog (Dialog de Radix, cabecera navy con firma) y AgendaWidget reutilizable: calendario pequeño propio (lunes primero, días pasados deshabilitados, hoy con anillo, selección dorada), 6 horarios (deshabilitados hasta elegir día y si ya pasaron), formulario (nombre, correo, empresa, mensaje con precarga del servicio) y estado de éxito con resumen
+- Backend: modelo AgendaLead en prisma/schema.prisma + db:push; API POST /api/agenda (src/app/api/agenda/route.ts) con validación y guardado en SQLite (verificado 201 y registro en DB)
+- cta-button.tsx convertido a cliente: abre el diálogo vía useAgenda() (header, hero y CTA lo comparten; interés precargado)
+- services.tsx: "use client" + prop onOpen; botones "Quiero saber más" abren la pestaña de detalle del servicio
+- Creado service-detail.tsx: vista completa por servicio (consultoria/procesos/talleres) con migas, "Volver a inicio", hero con chips meta, bloques innovadores (ruta interactiva en 4 movimientos con entregables + antes/después; flujo "del caos al flujo" + tabla antes/después; selector de formatos Presencial/Online/Híbrido + 6 módulos + ritmo 3×1), "Qué incluye", "¿Es para ti?/No es para ti si…" y CTA con agenda precargada
+- page.tsx: orquestador cliente con useSyncExternalStore sobre el hash (#servicio-id), pushState/popstate para back/forward del navegador, interceptor de anclas en vista detalle
+- Corregidos 2 errores de lint (set-state-in-effect): store de hash externo en page.tsx y eliminado runId (Radix desmonta el contenido al cerrar); añadido aria-describedby={undefined} para warning de Radix
+- Corregido "Septiembre De 2026" (clase capitalize) y solapamiento de firma/pilares en móvil (ahora en flujo bajo los botones, sm:hidden)
+- Verificación con Agent Browser: desktop 1440px y móvil 390px; flujo completo de agenda (día 29 → 10:30 → formulario → éxito → registro en DB), 3 pestañas de servicio, volver a inicio, botón atrás del navegador, footer pegado abajo, consola limpia; lint OK; dev.log con GET / 200 y POST /api/agenda 201
+
+Stage Summary:
+- Nuevas capacidades: diálogo de agenda con calendario + formulario persistido en DB; 3 pestañas de detalle de servicio con navegación por hash y contenido innovador; HERO con perfil protagonista y tipografía Montserrat fiel al mockup
+- Archivos: layout.tsx, globals.css, page.tsx, api/agenda/route.ts, prisma/schema.prisma (AgendaLead) y componentes landing/{agenda,service-detail,services,cta-button,hero}.tsx + font-display en el resto
+- Verificado end-to-end en navegador (desktop y móvil) sin errores de runtime

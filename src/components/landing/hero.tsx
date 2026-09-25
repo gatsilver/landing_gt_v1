@@ -13,9 +13,9 @@ const HERO_FEATURES = [
 export function Hero() {
   return (
     <section id="inicio" className="relative overflow-hidden bg-navy-800">
-      {/* Fotografía personal integrada al fondo */}
+      {/* Fotografía personal — protagonista del hero */}
       <div
-        className="absolute inset-y-0 right-0 w-full sm:w-[62%] lg:w-[52%]"
+        className="absolute inset-y-0 right-0 w-full sm:w-[66%] lg:w-[58%]"
         aria-hidden={false}
       >
         <Image
@@ -23,21 +23,29 @@ export function Hero() {
           alt="Gabino, consultor de empresas, en su oficina"
           fill
           priority
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 62vw, 52vw"
-          className="object-cover object-[50%_18%] saturate-[0.85]"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 66vw, 58vw"
+          className="object-cover object-[50%_22%] saturate-[0.98] contrast-[1.03]"
         />
-        {/* Fundidos para integrar la foto al fondo azul marino */}
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-800 via-navy-800/55 to-navy-800/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-800 via-transparent to-navy-800/45" />
-        <div className="absolute inset-0 bg-navy-800/30 mix-blend-multiply" />
+        {/* Halo suave que acompaña al perfil y lo separa del fondo */}
+        <div
+          aria-hidden
+          className="absolute left-[46%] top-[30%] size-[46%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-accent/25 mix-blend-screen blur-[90px]"
+        />
+        <div
+          aria-hidden
+          className="absolute bottom-[12%] right-[18%] size-[36%] rounded-full bg-gold-300/15 mix-blend-screen blur-[100px]"
+        />
+        {/* Fundidos ligeros: la foto mantiene su protagonismo */}
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-800 via-navy-800/30 sm:via-navy-800/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-800 via-transparent to-navy-800/25" />
       </div>
 
-      {/* Firma y pilares */}
-      <div className="pointer-events-none absolute right-5 top-12 z-10 text-right sm:right-12 sm:top-16">
-        <p className="font-script text-5xl leading-none text-white/95 [-rotate-6] sm:text-[64px]">
+      {/* Firma y pilares — superpuesta en sm+ */}
+      <div className="pointer-events-none absolute right-5 top-12 z-10 hidden text-right sm:right-12 sm:top-16 sm:block">
+        <p className="font-script text-5xl leading-none text-white drop-shadow-[0_2px_10px_rgba(6,26,41,0.55)] [-rotate-6] sm:text-[64px]">
           Gabino
         </p>
-        <p className="mt-2 space-y-0.5 text-[9.5px] font-semibold leading-[1.7] tracking-[0.32em] text-teal-accent/90 sm:text-[10px]">
+        <p className="mt-2 space-y-0.5 text-[9.5px] font-semibold leading-[1.7] tracking-[0.32em] text-teal-accent drop-shadow-[0_1px_6px_rgba(6,26,41,0.65)] sm:text-[10px]">
           <span className="block">ESTRATEGIA</span>
           <span className="block">PERSONAS</span>
           <span className="block">PROCESOS</span>
@@ -46,10 +54,10 @@ export function Hero() {
       </div>
 
       {/* Contenido */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pb-12 pt-14 lg:px-8 lg:pb-16 lg:pt-20">
-        <div className="max-w-xl">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pb-14 pt-16 lg:px-8 lg:pb-20 lg:pt-24">
+        <div className="max-w-xl lg:max-w-2xl">
           <Reveal>
-            <h1 className="font-serif text-4xl font-semibold leading-[1.1] text-white sm:text-5xl lg:text-[54px]">
+            <h1 className="font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[52px]">
               Haz crecer tu negocio
               <br />
               con <span className="text-teal-accent">estrategia, orden</span>
@@ -58,7 +66,7 @@ export function Hero() {
             </h1>
           </Reveal>
           <Reveal delay={120}>
-            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/80">
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/85">
               Acompaño a dueños, líderes y equipos a ordenar su negocio, tomar
               mejores decisiones y crecer de forma más clara y sostenible.
             </p>
@@ -75,6 +83,21 @@ export function Hero() {
                 </span>
                 Conoce mi método
               </a>
+            </div>
+          </Reveal>
+
+          {/* Firma y pilares — en flujo solo en móvil */}
+          <Reveal delay={300} className="pointer-events-none mt-10 flex justify-end sm:hidden">
+            <div className="text-right">
+              <p className="font-script text-5xl leading-none text-white drop-shadow-[0_2px_10px_rgba(6,26,41,0.55)] [-rotate-6]">
+                Gabino
+              </p>
+              <p className="mt-2 space-y-0.5 text-[9.5px] font-semibold leading-[1.7] tracking-[0.32em] text-teal-accent drop-shadow-[0_1px_6px_rgba(6,26,41,0.65)]">
+                <span className="block">ESTRATEGIA</span>
+                <span className="block">PERSONAS</span>
+                <span className="block">PROCESOS</span>
+                <span className="block">RESULTADOS</span>
+              </p>
             </div>
           </Reveal>
         </div>

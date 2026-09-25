@@ -20,9 +20,8 @@
   --color-gold-300: #e3c78d;
   --color-gold-400: #d6b070;
   --color-gold-500: #c79c55;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-lora), Georgia, serif;
-  --font-logo: var(--font-marcellus), Georgia, serif;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
   --font-script: var(--font-delafield), cursive;
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);

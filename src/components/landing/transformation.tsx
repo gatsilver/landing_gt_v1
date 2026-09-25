@@ -55,7 +55,7 @@ export function Transformation() {
           <p className="text-[11px] font-bold tracking-[0.22em] text-white/55">
             DE ESFUERZO A RESULTADOS REALES
           </p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight lg:text-[38px]">
+          <h2 className="mt-3 font-display text-3xl font-bold leading-tight lg:text-[38px]">
             Pasar del día a día al crecimiento con propósito
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-white/75 lg:text-[15px]">

@@ -63,7 +63,7 @@ export function Method() {
           <p className="text-[11px] font-bold tracking-[0.22em] text-teal-deep/80">
             MI MÉTODO
           </p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-navy-800 lg:text-[34px]">
+          <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-navy-800 lg:text-[34px]">
             Así trabajo
           </h2>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-navy-800/70">

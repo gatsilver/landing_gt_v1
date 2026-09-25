@@ -1,23 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Lora, Marcellus, Mrs_Saint_Delafield } from "next/font/google";
+import { Montserrat, Mrs_Saint_Delafield } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
-  display: "swap",
-});
-
-const lora = Lora({
-  variable: "--font-lora",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const marcellus = Marcellus({
-  variable: "--font-marcellus",
-  weight: "400",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -56,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${lora.variable} ${marcellus.variable} ${delafield.variable} antialiased bg-background text-foreground`}
+        className={`${montserrat.variable} ${delafield.variable} antialiased bg-background text-foreground`}
       >
         {children}
       </body>

@@ -61,7 +61,7 @@ export function Testimonials() {
             <p className="text-[11px] font-bold tracking-[0.22em] text-navy-800/45">
               RESULTADOS REALES
             </p>
-            <h2 className="mt-3 max-w-2xl font-serif text-2xl font-semibold leading-tight text-navy-800 sm:text-3xl lg:text-[30px]">
+            <h2 className="mt-3 max-w-2xl font-display text-2xl font-bold leading-tight text-navy-800 sm:text-3xl lg:text-[30px]">
               Lo que dicen quienes ya trabajaron conmigo
             </h2>
           </Reveal>

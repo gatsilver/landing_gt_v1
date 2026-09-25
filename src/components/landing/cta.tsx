@@ -31,7 +31,7 @@ export function CtaSection() {
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-14 sm:px-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:py-16 lg:pl-44">
         <Reveal>
-          <h2 className="font-serif text-3xl font-semibold leading-tight lg:text-[34px]">
+          <h2 className="font-display text-3xl font-bold leading-tight lg:text-[34px]">
             Tu negocio no necesita más caos.
             <br />
             Necesita dirección.

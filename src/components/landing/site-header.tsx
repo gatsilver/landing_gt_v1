@@ -58,7 +58,7 @@ export function SiteHeader() {
           className="flex items-center gap-3"
           aria-label="Gabino — inicio"
         >
-          <span className="pl-1 font-logo text-lg tracking-[0.38em] text-white">
+          <span className="pl-1 font-display text-lg font-semibold tracking-[0.38em] text-white">
             GABINO
           </span>
           <span className="hidden h-6 w-px bg-white/25 sm:block" aria-hidden />

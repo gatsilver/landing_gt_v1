@@ -29,7 +29,7 @@ export function SiteFooter() {
     <footer className="mt-auto border-t border-white/10 bg-navy-900 text-white">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-4 py-6 md:flex-row lg:px-8">
         <div className="flex items-center gap-3">
-          <span className="font-logo text-lg tracking-[0.35em]">GABINO</span>
+          <span className="font-display text-lg tracking-[0.35em]">GABINO</span>
           <span className="hidden h-5 w-px bg-white/25 sm:block" aria-hidden />
           <span className="hidden text-[11px] text-white/60 sm:block">
             Transformación empresarial con propósito

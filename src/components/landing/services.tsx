@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import { ArrowRight, BarChart3, Settings, Users } from "lucide-react";
 import { Reveal } from "./reveal";
 
-const SERVICE_CARDS = [
+export const SERVICE_CARDS = [
   {
+    id: "consultoria",
     icon: Users,
     image: "/images/service-consultoria.png",
     alt: "Consultor presentando a un equipo directivo en una oficina",
@@ -11,6 +14,7 @@ const SERVICE_CARDS = [
     desc: "Estrategia, estructura y acompañamiento para tomar mejores decisiones y hacer crecer tu negocio.",
   },
   {
+    id: "procesos",
     icon: Settings,
     image: "/images/service-procesos.png",
     alt: "Manos trabajando sobre documentos y notas adhesivas en un escritorio",
@@ -18,15 +22,22 @@ const SERVICE_CARDS = [
     desc: "Diseñamos e implementamos procesos que simplifican, alinean y hacen más eficiente tu operación.",
   },
   {
+    id: "talleres",
     icon: BarChart3,
     image: "/images/service-talleres.png",
     alt: "Facilitador dirigiendo un taller empresarial frente a una audiencia",
     title: "Talleres y acompañamiento empresarial",
     desc: "Sesiones prácticas para fortalecer habilidades, alinear equipos y ejecutar con enfoque.",
   },
-];
+] as const;
 
-export function Services() {
+export type ServiceId = (typeof SERVICE_CARDS)[number]["id"];
+
+export function Services({
+  onOpen,
+}: {
+  onOpen?: (id: ServiceId) => void;
+}) {
   return (
     <section id="servicios" className="scroll-mt-16 bg-cream py-14 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
@@ -35,7 +46,7 @@ export function Services() {
             <p className="text-[11px] font-bold tracking-[0.22em] text-navy-800/45">
               SERVICIOS
             </p>
-            <h2 className="mt-3 max-w-2xl font-serif text-3xl font-semibold leading-tight text-navy-800 lg:text-[34px]">
+            <h2 className="mt-3 max-w-2xl font-display text-3xl font-bold leading-tight text-navy-800 lg:text-[34px]">
               Servicios pensados para negocios{" "}
               <span className="text-teal-deep">
                 que quieren dar el siguiente paso.
@@ -44,7 +55,7 @@ export function Services() {
           </Reveal>
           <Reveal delay={100}>
             <a
-              href="#servicios"
+              href="#contacto"
               className="group inline-flex items-center gap-2 pb-1 text-[13px] font-semibold text-navy-800 transition-colors hover:text-teal-deep"
             >
               Ver todos los servicios
@@ -58,7 +69,7 @@ export function Services() {
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {SERVICE_CARDS.map((card, i) => (
-            <Reveal key={card.title} delay={i * 100} className="h-full">
+            <Reveal key={card.id} delay={i * 100} className="h-full">
               <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white shadow-[0_1px_3px_rgba(14,42,61,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-xl">
                 {/* Imagen con insignia superpuesta */}
                 <div className="relative h-44">
@@ -83,16 +94,18 @@ export function Services() {
                   <p className="mt-2 flex-1 text-[13px] leading-relaxed text-navy-800/65">
                     {card.desc}
                   </p>
-                  <a
-                    href="#contacto"
-                    className="group/link mt-4 inline-flex items-center gap-2 text-[13px] font-bold text-navy-800 transition-colors hover:text-teal-deep"
+                  <button
+                    type="button"
+                    onClick={() => onOpen?.(card.id)}
+                    aria-label={`Ver detalle: ${card.title}`}
+                    className="group/link mt-4 inline-flex w-fit cursor-pointer items-center gap-2 text-[13px] font-bold text-navy-800 transition-colors hover:text-teal-deep"
                   >
                     Quiero saber más
                     <ArrowRight
                       className="size-4 transition-transform duration-300 group-hover/link:translate-x-1"
                       aria-hidden
                     />
-                  </a>
+                  </button>
                 </div>
               </article>
             </Reveal>
