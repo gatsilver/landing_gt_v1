@@ -71,3 +71,20 @@ Stage Summary:
 - Nuevas capacidades: diálogo de agenda con calendario + formulario persistido en DB; 3 pestañas de detalle de servicio con navegación por hash y contenido innovador; HERO con perfil protagonista y tipografía Montserrat fiel al mockup
 - Archivos: layout.tsx, globals.css, page.tsx, api/agenda/route.ts, prisma/schema.prisma (AgendaLead) y componentes landing/{agenda,service-detail,services,cta-button,hero}.tsx + font-display en el resto
 - Verificado end-to-end en navegador (desktop y móvil) sin errores de runtime
+
+---
+Task ID: hero-impact-refinement
+Agent: Z.ai Code (main)
+Task: Revisar el hero según la nueva referencia del usuario y dar impacto al perfil fotográfico (protagonismo de la foto como en la referencia).
+
+Work Log:
+- Descargada la referencia en alta resolución (upload/hero-referencia.png) y sampleo de píxeles con PIL: fondo hero #0e202a, acento mint del título #a2e6e3, firma blanca, dorado botón #e7cb92 (coincide con tokens actuales).
+- Diagnóstico: la foto original (oficina blanca brillante) estaba velada por gradientes; la referencia muestra escena oscura cinematográfica con Gabino iluminado.
+- Retoque fotográfico con z-ai-web-dev-sdk (images.generations.edit) preservando la identidad: public/images/gabino-hero-v2.png (1344x768) — oficina verde-teal oscura, lámparas cálidas, planta a la derecha, Gabino como foco iluminado.
+- Reescrito src/components/landing/hero.tsx: fondo exacto #0e202a, foto protagonista (62% ancho lg, object-position afinado 85% lg / 50% móvil), gradientes mínimos (solo fusión izquierda y profundidad base), acento mint #a2e6e3 en título, subtítulo 3 líneas con saltos exactos en lg, icono Target en franja de pilares, firma ampliada (72px) y lista en #94d2ca.
+- Verificación con agent-browser en desktop (1440) y móvil (390): composición, legibilidad y responsividad correctas. Lint sin errores. Limpieza de temporales (scripts-tmp, capturas).
+
+Stage Summary:
+- Hero visualmente alineado a la referencia: foto con impacto cinematográfico, colores exactos sampleados, tipografía y quiebres de línea fieles al mockup.
+- Nueva imagen: public/images/gabino-hero-v2.png (la original gabino-hero.png se conserva).
+- Pendiente operativo: commit + push a github.com/gatsilver/landing_gt_v1.

@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { BarChart3, Crosshair, Lightbulb, Play, Users } from "lucide-react";
+import { BarChart3, Lightbulb, Play, Target, Users } from "lucide-react";
 import { CtaButton } from "./cta-button";
 import { Reveal } from "./reveal";
 
 const HERO_FEATURES = [
-  { icon: Crosshair, lines: ["Enfoque", "práctico"], gold: false },
+  { icon: Target, lines: ["Enfoque", "práctico"], gold: false },
   { icon: BarChart3, lines: ["Resultados", "medibles"], gold: false },
   { icon: Users, lines: ["Acompañamiento", "cercano"], gold: false },
   { icon: Lightbulb, lines: ["Visión", "estratégica"], gold: true },
@@ -12,40 +12,37 @@ const HERO_FEATURES = [
 
 export function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden bg-navy-800">
-      {/* Fotografía personal — protagonista del hero */}
-      <div
-        className="absolute inset-y-0 right-0 w-full sm:w-[66%] lg:w-[58%]"
-        aria-hidden={false}
-      >
+    <section id="inicio" className="relative overflow-hidden bg-[#0e202a]">
+      {/* Fotografía personal — protagonista absoluto del hero.
+          Escena oscura cinematográfica: Gabino iluminado emerge del fondo,
+          igual que en la referencia. */}
+      <div className="absolute inset-y-0 right-0 w-full sm:w-[68%] lg:w-[62%]">
         <Image
-          src="/images/gabino-hero.png"
+          src="/images/gabino-hero-v2.png"
           alt="Gabino, consultor de empresas, en su oficina"
           fill
           priority
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 66vw, 58vw"
-          className="object-cover object-[50%_22%] saturate-[0.98] contrast-[1.03]"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 68vw, 62vw"
+          className="object-cover object-[50%_50%] contrast-[1.04] saturate-[1.05] lg:object-[85%_50%]"
         />
-        {/* Halo suave que acompaña al perfil y lo separa del fondo */}
+        {/* Fusión suave solo en el borde izquierdo: la foto conserva todo su impacto */}
         <div
           aria-hidden
-          className="absolute left-[46%] top-[30%] size-[46%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-accent/25 mix-blend-screen blur-[90px]"
+          className="absolute inset-0 bg-gradient-to-r from-[#0e202a] from-0% via-[#0e202a]/45 via-[16%] to-transparent to-[55%]"
         />
+        {/* Profundidad sutil hacia la base, como en la referencia */}
         <div
           aria-hidden
-          className="absolute bottom-[12%] right-[18%] size-[36%] rounded-full bg-gold-300/15 mix-blend-screen blur-[100px]"
+          className="absolute inset-0 bg-gradient-to-t from-[#0e202a]/70 via-transparent to-[#0e202a]/15"
         />
-        {/* Fundidos ligeros: la foto mantiene su protagonismo */}
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-800 via-navy-800/30 sm:via-navy-800/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-800 via-transparent to-navy-800/25" />
       </div>
 
       {/* Firma y pilares — superpuesta en sm+ */}
-      <div className="pointer-events-none absolute right-5 top-12 z-10 hidden text-right sm:right-12 sm:top-16 sm:block">
-        <p className="font-script text-5xl leading-none text-white drop-shadow-[0_2px_10px_rgba(6,26,41,0.55)] [-rotate-6] sm:text-[64px]">
+      <div className="pointer-events-none absolute right-5 top-12 z-10 hidden text-right sm:right-12 sm:top-14 sm:block">
+        <p className="font-script text-5xl leading-none text-white drop-shadow-[0_2px_10px_rgba(6,26,41,0.55)] [-rotate-6] sm:text-[64px] lg:text-[72px]">
           Gabino
         </p>
-        <p className="mt-2 space-y-0.5 text-[9.5px] font-semibold leading-[1.7] tracking-[0.32em] text-teal-accent drop-shadow-[0_1px_6px_rgba(6,26,41,0.65)] sm:text-[10px]">
+        <p className="mt-2 space-y-0.5 text-[9.5px] font-semibold leading-[1.7] tracking-[0.32em] text-[#94d2ca] drop-shadow-[0_1px_6px_rgba(6,26,41,0.65)] sm:text-[10px]">
           <span className="block">ESTRATEGIA</span>
           <span className="block">PERSONAS</span>
           <span className="block">PROCESOS</span>
@@ -57,22 +54,23 @@ export function Hero() {
       <div className="relative z-10 mx-auto max-w-7xl px-4 pb-14 pt-16 lg:px-8 lg:pb-20 lg:pt-24">
         <div className="max-w-xl lg:max-w-2xl">
           <Reveal>
-            <h1 className="font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[52px]">
+            <h1 className="font-display text-[38px] font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[52px]">
               Haz crecer tu negocio
               <br />
-              con <span className="text-teal-accent">estrategia, orden</span>
+              con <span className="text-[#a2e6e3]">estrategia, orden</span>
               <br />
-              <span className="text-teal-accent">y enfoque.</span>
+              <span className="text-[#a2e6e3]">y enfoque.</span>
             </h1>
           </Reveal>
           <Reveal delay={120}>
-            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/85">
-              Acompaño a dueños, líderes y equipos a ordenar su negocio, tomar
-              mejores decisiones y crecer de forma más clara y sostenible.
+            <p className="mt-5 max-w-xl text-[16px] leading-[1.55] text-white/90 lg:max-w-none lg:text-[17px]">
+              Acompaño a dueños, líderes y equipos a ordenar su negocio,
+              <br className="hidden lg:block" /> tomar mejores decisiones y crecer de forma más clara
+              <br className="hidden lg:block" /> y sostenible.
             </p>
           </Reveal>
           <Reveal delay={220}>
-            <div className="mt-7 flex flex-wrap items-center gap-3">
+            <div className="mt-7 flex flex-wrap items-center gap-4">
               <CtaButton size="md" />
               <a
                 href="#metodo"
@@ -92,7 +90,7 @@ export function Hero() {
               <p className="font-script text-5xl leading-none text-white drop-shadow-[0_2px_10px_rgba(6,26,41,0.55)] [-rotate-6]">
                 Gabino
               </p>
-              <p className="mt-2 space-y-0.5 text-[9.5px] font-semibold leading-[1.7] tracking-[0.32em] text-teal-accent drop-shadow-[0_1px_6px_rgba(6,26,41,0.65)]">
+              <p className="mt-2 space-y-0.5 text-[9.5px] font-semibold leading-[1.7] tracking-[0.32em] text-[#94d2ca] drop-shadow-[0_1px_6px_rgba(6,26,41,0.65)]">
                 <span className="block">ESTRATEGIA</span>
                 <span className="block">PERSONAS</span>
                 <span className="block">PROCESOS</span>
@@ -112,11 +110,11 @@ export function Hero() {
               className="flex items-center gap-3 border-b border-white/15 px-4 py-4 md:border-b-0 md:px-6 md:py-5 lg:px-7"
             >
               <f.icon
-                className={`size-6 shrink-0 ${f.gold ? "text-gold-300" : "text-white"}`}
+                className={`size-7 shrink-0 ${f.gold ? "text-gold-300" : "text-white"}`}
                 strokeWidth={1.4}
                 aria-hidden
               />
-              <p className="text-[13px] font-medium leading-snug text-white/90">
+              <p className="text-[13px] font-medium leading-snug text-white/90 lg:text-sm">
                 <span className="block">{f.lines[0]}</span>
                 <span className="block">{f.lines[1]}</span>
               </p>
