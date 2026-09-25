@@ -12,28 +12,40 @@ const HERO_FEATURES = [
 
 export function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden bg-[#0e202a]">
+    <section
+      id="inicio"
+      className="relative flex min-h-[560px] flex-col overflow-hidden bg-[#0e202a] lg:min-h-[calc(100svh-4rem)]"
+    >
       {/* Fotografía personal — protagonista absoluto del hero.
           Imagen original SIN filtro de oscuridad: se integra con un fundido
-          de máscara (disuelve el borde en el fondo) para máxima claridad. */}
+          de máscara (disuelve el borde en el fondo) para máxima claridad.
+          Recorte calibrado: la cabeza arranca al 15.2% de la imagen, así que
+          en lg+ se recorta solo 22% del desbordamiento vertical por arriba —
+          el rostro queda prominente y el cráneo NUNCA se corta ni en pestaña
+          completa ni en ultrawide; en móvil el encaje es por altura (sin
+          recorte vertical). */}
       <div className="absolute inset-y-0 right-0 w-full sm:w-[68%] lg:w-[62%]">
+        {/* Móvil: encaje por altura (sin recorte vertical) + X=57% para que
+            el rostro quede completo y centrado aunque la sección crezca;
+            lg+: X=50% (encaje exacto por ancho) y Y=22% del recorte arriba. */}
         <Image
           src="/images/gabino-hero.png"
           alt="Gabino, consultor de empresas, en su oficina"
           fill
           priority
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 68vw, 62vw"
-          className="object-cover object-[50%_50%] saturate-[1.03] contrast-[1.02] lg:object-[50%_55%] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_38%)] [mask-image:linear-gradient(to_right,transparent_0%,black_38%)]"
+          className="object-cover object-[57%_50%] saturate-[1.03] contrast-[1.02] lg:object-[50%_22%] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_38%)] [mask-image:linear-gradient(to_right,transparent_0%,black_38%)]"
         />
         {/* Asistencia de fusión a la izquierda (más presente en móvil) */}
         <div
           aria-hidden
           className="absolute inset-0 bg-gradient-to-r from-[#0e202a]/90 from-0% via-[#0e202a]/60 via-[20%] to-transparent to-[52%] sm:via-[#0e202a]/35 sm:via-[16%]"
         />
-        {/* Transición suave hacia la franja inferior */}
+        {/* Transición suave hacia la franja inferior (velo superior mínimo
+            para no oscurecer la foto) */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-[#0e202a]/75 via-transparent to-[#0e202a]/10"
+          className="absolute inset-0 bg-gradient-to-t from-[#0e202a]/75 via-transparent to-[#0e202a]/5"
         />
       </div>
 
@@ -51,8 +63,8 @@ export function Hero() {
         </p>
       </div>
 
-      {/* Contenido */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pb-14 pt-16 lg:px-8 lg:pb-20 lg:pt-24">
+      {/* Contenido — centrado verticalmente en el primer pantallazo (lg+) */}
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 items-center px-4 pb-14 pt-16 lg:px-8 lg:py-24">
         <div className="max-w-xl lg:max-w-2xl">
           <Reveal>
             <h1 className="font-display text-[38px] font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[52px]">

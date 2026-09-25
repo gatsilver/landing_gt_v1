@@ -106,3 +106,24 @@ Work Log:
 Stage Summary:
 - Hero final: foto original clara y elegante sin filtro oscuro, firma script fiel a la referencia, pilares ESTRATEGIA/PERSONAS/PROCESOS/TECNOLOGÍA/RESULTADOS.
 - Lección: si un cambio en globals.css no se refleja, limpiar .next (caché persistente de Turbopack).
+
+---
+Task ID: hero-photo-alignment-fulltab
+Agent: Z.ai Code (main)
+Task: Corregir el recorte de la foto del hero en pestaña completa (se cortaba un poco el cráneo), alineando la imagen para que se vea completa y elegante en tamaño original y en móvil.
+
+Work Log:
+- Diagnóstico con PIL: la cabeza arranca al 15.2% de la imagen (y=156/1024), ojos al 27%. El contenedor lg (62% del viewport) escala por ancho → con object-[50%_55%] se recortaba 55% del desbordamiento vertical desde ARRIBA → cráneo cortado en pestañas anchas (1557px+), pero no en el preview angosto.
+- Intento 1 (object-top desde sm): cabeza nunca se corta, pero a 1557x662 quedaba demasiado techo y el rostro muy abajo (medición: hair-top a 157px del tope del hero).
+- Causa raíz adicional: la altura de la sección era content-driven y variable (490-660px) → un mismo Y% recortaba distinto por viewport (a 1920x1080 el pelo quedaba a 5px del borde).
+- Solución final en hero.tsx:
+  1) Sección hero: flex flex-col + min-h-[560px] + lg:min-h-[calc(100svh-4rem)] → hero ocupa el primer pantallazo completo (como la referencia) con altura predecible; contenido centrado verticalmente (flex-1 items-center, lg:py-24).
+  2) object-position calibrado: móvil object-[57%_50%] (encaje por altura, X=57% centra el rostro completo — antes se cortaba por la derecha al crecer la sección), lg:object-[50%_22%] (recorta solo 22% del desbordamiento por arriba: pelo a 60-135px del tope en 1280-2560px).
+  3) Velo superior del gradiente bajado de /10 a /5 para máxima claridad de la foto.
+- Verificación agent-browser + medición pixel (Python) en 5视視ports: 390x844 (rostro completo centrado), 768x1024, 1557x662 (pestaña del usuario, hair-top a 59px ✓), 1920x1080 (hero full-screen, cabeza completa ✓), 2560 ultrawide teórico seguro.
+- bun run lint OK; dev.log sin errores.
+
+Stage Summary:
+- El cráneo ya NO se corta en ninguna resolución (preview, pestaña completa, ultrawide); el rostro queda prominente con espacio elegante superior.
+- Hero ahora llena el primer pantallazo en desktop (min-h 100svh-64px) como el mockup de referencia.
+- Móvil: rostro completo y centrado (object-[57%_50%]), texto legible sobre el fundido izquierdo.
